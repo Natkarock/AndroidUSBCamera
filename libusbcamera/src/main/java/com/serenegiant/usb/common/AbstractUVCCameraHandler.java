@@ -797,9 +797,9 @@ public abstract class AbstractUVCCameraHandler extends Handler {
 //					videoEncoder.frameAvailableSoon();
 //					videoEncoder.encode(frame);
 //				}
-                int len = frame.capacity();
-                final byte[] yuv = new byte[len];
-                frame.get(yuv);
+                //int len = frame.capacity();
+                final byte[] yuv = new byte[frame.remaining()];
+                frame.get(yuv, 0, yuv.length);;
                 // nv21 yuv data callback
                 if (mPreviewListener != null) {
                     mPreviewListener.onPreviewResult(yuv);
